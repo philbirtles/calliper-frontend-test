@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
+import { PageLayout } from "../layouts";
 
 export const HomeView = () => {
-  return <Box>HomeView</Box>;
+  return <PageLayout />;
 };
