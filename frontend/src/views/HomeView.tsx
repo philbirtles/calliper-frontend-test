@@ -1,5 +1,5 @@
 import { PageLayout } from "../layouts";
 
 export const HomeView = () => {
-  return <PageLayout />;
+  return <PageLayout>Home View</PageLayout>;
 };

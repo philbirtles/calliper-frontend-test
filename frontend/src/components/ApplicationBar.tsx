@@ -3,12 +3,15 @@ import { CalliperLogo } from "./CalliperLogo";
 
 export const ApplicationBar = () => {
   return (
-    <AppBar position="fixed" color="primary">
-      <Toolbar>
-        <Button color="inherit">
-          <CalliperLogo />
-        </Button>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar position="fixed" color="primary">
+        <Toolbar>
+          <Button color="inherit">
+            <CalliperLogo />
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   );
 };
