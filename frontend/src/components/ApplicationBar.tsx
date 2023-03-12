@@ -4,7 +4,11 @@ import { CalliperLogo } from "./CalliperLogo";
 export const ApplicationBar = () => {
   return (
     <>
-      <AppBar position="fixed" color="primary">
+      <AppBar
+        position="fixed"
+        color="primary"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar>
           <Button color="inherit">
             <CalliperLogo />
