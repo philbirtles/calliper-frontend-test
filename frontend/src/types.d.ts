@@ -19,7 +19,7 @@ type CommentThread = {
   chart_data_point: ChartDataPoint[];
 };
 
-type Comment = {
+type CommentItem = {
   user_name: string;
   text: string;
 };
@@ -32,16 +32,16 @@ type ChartDataResponse = {
 type CommentThreadsResponse = CommentThread[];
 
 type CommentThreadResponse = CommentThread & {
-  comments: Comment[];
+  comments: CommentItem[];
 };
 
 type CreateThreadRequest = {
-  comment: Comment;
+  comment: CommentItem;
   data_point: ChartDataPoint;
 };
 
 type RespondToCommentThreadRequest = {
-  comment: Comment;
+  comment: CommentItem;
 };
 
 type ShareResponse = {
