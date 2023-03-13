@@ -14,16 +14,17 @@ export const CommentCard = ({ userName, message }: CommentCardProps) => {
           elevation={2}
           sx={{
             marginBottom: 2,
-            padding: 2,
+            paddingY: 1,
+            paddingX: 2,
             flexGrow: 1,
-            borderRadius: "20px 20px 20px 0px",
+            borderRadius: "16px 16px 16px 0px",
           }}
         >
           <Stack spacing={1}>
             <Typography fontSize={14} fontWeight={700} variant={"body1"}>
               {userName}
             </Typography>
-            <Typography variant="subtitle1" fontSize={14}>
+            <Typography paddingX={1} variant="subtitle1" fontSize={14}>
               {message}
             </Typography>
           </Stack>
