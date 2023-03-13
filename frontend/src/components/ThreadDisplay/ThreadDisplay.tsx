@@ -1,4 +1,4 @@
-import { Stack, Paper, Box } from "@mui/material";
+import { Stack, Paper, Box, Typography } from "@mui/material";
 import { CommentCard, CommentForm } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
@@ -52,6 +52,11 @@ export const ThreadDisplay = () => {
               overflow: "auto",
             }}
           >
+            {(!thread?.comments || thread.comments.length <= 0) && (
+              <Typography textAlign="center">
+                Be the first to say something about this.
+              </Typography>
+            )}
             {thread?.comments?.map(({ userName, text }, index) => {
               return (
                 <CommentCard

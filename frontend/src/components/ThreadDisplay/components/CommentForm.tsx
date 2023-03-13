@@ -11,8 +11,6 @@ export const CommentForm = ({
 }: CommentFormProps) => {
   const [inputText, setInputText] = useState("");
 
-  console.log("!!!selectedData", selectedDataPoint);
-
   useEffect(() => {
     setInputText("");
   }, [selectedDataPoint]);
@@ -29,6 +27,7 @@ export const CommentForm = ({
         >
           <Stack spacing={1}>
             <TextField
+              required
               placeholder="Add a message..."
               onChange={(event) => setInputText(event.currentTarget.value)}
               fullWidth

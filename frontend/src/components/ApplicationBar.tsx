@@ -6,7 +6,7 @@ export const ApplicationBar = () => {
     <>
       <AppBar
         position="fixed"
-        color="primary"
+        color="secondary"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
