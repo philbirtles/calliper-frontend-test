@@ -1,11 +1,12 @@
 import { useQuery } from "react-query";
+import { v4 as uuidv4 } from "uuid";
 import { getCommentThreadById, postCreateThread } from "../../../api";
-import { useAppState } from "../../../context";
+import { setChartRefreshKey, useAppState } from "../../../context";
 import { useCallback } from "react";
 import { postRespondToThread } from "../../../api/postRespondToThread";
 
 export const useThreadDisplayState = () => {
-  const { selectedDataPoint } = useAppState();
+  const { selectedDataPoint, dispatch } = useAppState();
 
   const { data } = useQuery(selectedDataPoint?.threadId ?? "", () =>
     getCommentThreadById(selectedDataPoint?.threadId)
@@ -20,6 +21,7 @@ export const useThreadDisplayState = () => {
           user_name: "Anonymous",
           text,
         });
+        dispatch?.(setChartRefreshKey(uuidv4()));
       } else {
         await postCreateThread({
           data_point: {
@@ -31,9 +33,10 @@ export const useThreadDisplayState = () => {
             text,
           },
         });
+        dispatch?.(setChartRefreshKey(uuidv4()));
       }
     },
-    [selectedDataPoint]
+    [selectedDataPoint, dispatch]
   );
 
   return {

@@ -11,11 +11,14 @@ export interface CommentLabelProps {
 }
 
 export const CommentLabel = (props: CommentLabelProps) => {
-  const { comments, iconSize, xOffset, yOffset } = useCommentLabelState(props);
+  const { comments, iconSize, xOffset, yOffset, isLoading } =
+    useCommentLabelState(props);
   const { country, feature } = props.value ?? {};
   if (!comments || comments.commentsCount <= 0) {
     return null;
   }
+
+  if (isLoading) return null;
 
   return (
     <g

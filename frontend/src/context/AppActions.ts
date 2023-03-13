@@ -10,3 +10,11 @@ export const setSelectedDataPoint = (dataPoint?: ChartDataPointThread) => {
     payload: dataPoint,
   };
 };
+
+export const SET_CHART_REFRESH_KEY = "SET_CHART_REFRESH_KEY";
+export const setChartRefreshKey = (refreshKey: string) => {
+  return {
+    type: SET_CHART_REFRESH_KEY,
+    payload: refreshKey,
+  };
+};

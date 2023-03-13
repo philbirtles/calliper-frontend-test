@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import { useCallback } from "react";
 import { getCommentThreads } from "../../../api";
 
 import { setSelectedDataPoint, useAppState } from "../../../context";
@@ -11,20 +12,23 @@ export const useChartInteractions = () => {
     getCommentThreads
   );
 
-  const onFeatureClick = (data: Record<string, string>, dataKey: string) => {
-    const matchingThread = getThreadByFeature(
-      commentThreads,
-      dataKey,
-      data.country
-    );
-    dispatch?.(
-      setSelectedDataPoint({
-        threadId: matchingThread?.id,
-        feature: dataKey as ChartDataFeature,
-        country: data.country as Country,
-      })
-    );
-  };
+  const onFeatureClick = useCallback(
+    (data: Record<string, string>, dataKey: string) => {
+      const matchingThread = getThreadByFeature(
+        commentThreads,
+        dataKey,
+        data.country
+      );
+      dispatch?.(
+        setSelectedDataPoint({
+          threadId: matchingThread?.id,
+          feature: dataKey as ChartDataFeature,
+          country: data.country as Country,
+        })
+      );
+    },
+    [commentThreads, dispatch]
+  );
 
   return {
     onFeatureClick,

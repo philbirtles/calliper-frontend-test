@@ -11,3 +11,12 @@ export const barChartProps = {
     bottom: 5,
   },
 };
+
+export const dataKeys: ChartDataFeature[] = [
+  "burger",
+  "donut",
+  "fries",
+  "hotdog",
+  "kebab",
+  "sandwich",
+];

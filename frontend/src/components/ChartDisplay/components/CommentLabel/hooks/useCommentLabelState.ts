@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useQuery } from "react-query";
 import { getCommentThreads } from "../../../../../api";
+import { useAppState } from "../../../../../context";
 import { getThreadByFeature } from "../../../../../utils";
 import { CommentLabelProps } from "../CommentLabel";
 
@@ -15,9 +16,10 @@ export const useCommentLabelState = ({
   isStack = false,
 }: CommentLabelProps) => {
   const { feature, country } = value ?? {};
+  const { chartRefreshKey } = useAppState();
 
-  const { data: commentThreads } = useQuery(
-    "commentThreads",
+  const { data: commentThreads, isLoading } = useQuery(
+    chartRefreshKey,
     getCommentThreads
   );
 
@@ -47,5 +49,6 @@ export const useCommentLabelState = ({
     xOffset,
     yOffset,
     iconSize,
+    isLoading,
   };
 };
