@@ -34,7 +34,9 @@ export const ChartDisplay = () => {
               dataKey={dataKey}
             >
               <LabelList
-                content={<CommentLabel isStack={false} />}
+                content={
+                  <CommentLabel isStack={false} onClick={onFeatureClick} />
+                }
                 valueAccessor={({ country }: any) => {
                   return { country, feature: dataKey };
                 }}

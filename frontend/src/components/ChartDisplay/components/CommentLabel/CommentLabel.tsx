@@ -5,19 +5,25 @@ export interface CommentLabelProps {
   y?: number;
   width?: number;
   height?: number;
+  onClick?: (data: Record<string, string>, dataKey: string) => void;
   value?: { country: Country; feature: ChartDataFeature };
   isStack?: boolean; //@TODO handle this better
 }
 
 export const CommentLabel = (props: CommentLabelProps) => {
   const { comments, iconSize, xOffset, yOffset } = useCommentLabelState(props);
-
+  const { country, feature } = props.value ?? {};
   if (!comments || comments.commentsCount <= 0) {
     return null;
   }
 
   return (
-    <g>
+    <g
+      onClick={() => {
+        if (!country || !feature) return;
+        props.onClick?.({ country }, feature);
+      }}
+    >
       <svg
         fill="#203041"
         x={xOffset}
