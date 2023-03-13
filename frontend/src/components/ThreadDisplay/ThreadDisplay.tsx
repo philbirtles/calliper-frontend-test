@@ -62,7 +62,12 @@ export const ThreadDisplay = () => {
               );
             })}
           </Stack>
-          {selectedDataPoint && <CommentForm onSubmit={createMessage} />}
+          {selectedDataPoint && (
+            <CommentForm
+              selectedDataPoint={selectedDataPoint}
+              onSubmit={createMessage}
+            />
+          )}
         </Stack>
       </Paper>
     </Box>

@@ -7,7 +7,6 @@ export interface CommentLabelProps {
   height?: number;
   onClick?: (data: Record<string, string>, dataKey: string) => void;
   value?: { country: Country; feature: ChartDataFeature };
-  isStack?: boolean; //@TODO handle this better
   fill: string;
 }
 

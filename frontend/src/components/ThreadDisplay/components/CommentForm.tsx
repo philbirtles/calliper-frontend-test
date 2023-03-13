@@ -1,11 +1,21 @@
 import { Card, TextField, Button, Stack, Box } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export interface CommentFormProps {
+  selectedDataPoint?: ChartDataPointThread;
   onSubmit: (message: string) => void;
 }
-export const CommentForm = ({ onSubmit }: CommentFormProps) => {
+export const CommentForm = ({
+  onSubmit,
+  selectedDataPoint,
+}: CommentFormProps) => {
   const [inputText, setInputText] = useState("");
+
+  console.log("!!!selectedData", selectedDataPoint);
+
+  useEffect(() => {
+    setInputText("");
+  }, [selectedDataPoint]);
 
   return (
     <Card sx={{ padding: 1, overflow: "unset" }}>
@@ -14,6 +24,7 @@ export const CommentForm = ({ onSubmit }: CommentFormProps) => {
           onSubmit={(event) => {
             event.preventDefault();
             onSubmit(inputText);
+            setInputText("");
           }}
         >
           <Stack spacing={1}>
@@ -21,6 +32,7 @@ export const CommentForm = ({ onSubmit }: CommentFormProps) => {
               placeholder="Add a message..."
               onChange={(event) => setInputText(event.currentTarget.value)}
               fullWidth
+              value={inputText}
             />
             <Button
               variant="contained"
