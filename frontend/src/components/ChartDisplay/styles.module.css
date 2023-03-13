@@ -4,6 +4,7 @@
   transition: ease-in-out 0.3s;
 }
 
-.BarItem path:hover {
+.BarItem path:hover,
+.BarItem svg:hover {
   opacity: 0.8;
 }

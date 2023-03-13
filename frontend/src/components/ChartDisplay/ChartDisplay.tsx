@@ -4,11 +4,13 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  LabelList,
   Legend,
   ResponsiveContainer,
 } from "recharts";
 import { getChartData } from "../../api";
 import { barChartProps } from "./chartConfig";
+import { CommentLabel } from "./components";
 import { useChartDisplayState } from "./hooks";
 import { useChartInteractions } from "./hooks/useChartInteractions";
 import Styles from "./styles.module.css";
@@ -30,7 +32,14 @@ export const ChartDisplay = () => {
               key={dataKey}
               onClick={(data) => onFeatureClick(data, dataKey)}
               dataKey={dataKey}
-            ></Bar>
+            >
+              <LabelList
+                content={<CommentLabel isStack={false} />}
+                valueAccessor={({ country }: any) => {
+                  return { country, feature: dataKey };
+                }}
+              />
+            </Bar>
           );
         })}
       </BarChart>
