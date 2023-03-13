@@ -13,6 +13,10 @@ type ChartDataPoint = {
   country: Country;
 };
 
+type ChartDataPointThread = ChartDataPoint & {
+  threadId?: string;
+};
+
 type CommentThread = {
   id: string;
   comments_count: number;

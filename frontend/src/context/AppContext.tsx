@@ -2,6 +2,7 @@ import { createContext, Dispatch, useContext } from "react";
 import { IAction } from "./AppActions";
 
 export interface IAppContext {
+  selectedDataPoint?: ChartDataPointThread;
   selectedThreadId?: string;
   username?: string;
   dispatch?: Dispatch<IAction>;
