@@ -41,7 +41,7 @@ export const ChartDisplay = () => {
   }, [onFeatureClick]);
 
   return (
-    <ResponsiveContainer width="100%" height={600}>
+    <ResponsiveContainer height={600}>
       <BarChart {...barChartProps} data={data}>
         <XAxis dataKey="country" />
         <YAxis />

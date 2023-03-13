@@ -24,6 +24,11 @@ type CommentThread = {
 };
 
 type CommentItem = {
+  userName: string;
+  text: string;
+};
+
+type SentCommentItem = {
   user_name: string;
   text: string;
 };
@@ -40,7 +45,7 @@ type CommentThreadResponse = CommentThread & {
 };
 
 type CreateThreadRequest = {
-  comment: CommentItem;
+  comment: SentCommentItem;
   data_point: ChartDataPoint;
 };
 

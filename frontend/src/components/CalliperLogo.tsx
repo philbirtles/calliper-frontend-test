@@ -6,10 +6,10 @@ export const CalliperLogo = () => {
       component="img"
       src="https://uploads-ssl.webflow.com/5ef484b37d050d19a1fa66bf/63bd772c6f988176cbf3475e_Light%20Logo.png"
       sx={{
-        height: 32,
-        width: 138,
-        minHeight: { xs: 32, md: 24 },
-        maxHeight: { xs: 138, md: 104 },
+        height: 24,
+        width: 104,
+        minHeight: 24,
+        maxHeight: 104,
       }}
       alt="Calliper"
     />

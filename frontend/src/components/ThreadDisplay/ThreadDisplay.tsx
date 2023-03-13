@@ -1,29 +1,32 @@
-import { Drawer, Toolbar, Stack, Box, Card, Typography } from "@mui/material";
-import { CommentForm } from "./components";
+import { Stack, Paper } from "@mui/material";
+import { CommentCard, CommentForm } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
 
 export const ThreadDisplay = () => {
-  const { open, data: thread, createMessage } = useThreadDisplayState();
+  const { data: thread, createMessage } = useThreadDisplayState();
 
   return (
-    <Drawer open={open} anchor={"right"} variant="persistent">
-      <Toolbar />
+    <Paper
+      sx={{
+        height: "100%",
+        width: "100%",
+      }}
+    >
       <Stack width="100%" height="100%" justifyContent="space-between">
-        <Box>
-          {thread?.comments?.map((comment) => {
+        <Stack spacing={2} sx={{ padding: 2 }}>
+          {thread?.comments?.map(({ userName, text }, index) => {
             return (
-              <>
-                <Card key={comment.user_name + comment.text}>
-                  <Typography>{comment.user_name}</Typography>
-                  <Typography>{comment.text}</Typography>
-                </Card>
-              </>
+              <CommentCard
+                key={userName + text + index}
+                userName={userName}
+                message={text}
+              />
             );
           })}
-        </Box>
+        </Stack>
         <CommentForm onSubmit={createMessage} />
       </Stack>
-    </Drawer>
+    </Paper>
   );
 };

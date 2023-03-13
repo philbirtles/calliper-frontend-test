@@ -3,7 +3,7 @@ import { generateEndpointUri } from "../utils";
 
 export const postRespondToThread = async (
   threadId: string,
-  comment: CommentItem
+  comment: SentCommentItem
 ) => {
   const endpointUri = generateEndpointUri(
     `chart/comment_threads/${threadId}/respond`

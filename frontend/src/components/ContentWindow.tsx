@@ -11,6 +11,7 @@ export const ContentWindow = ({ children }: ContentWindowProps) => {
         flexGrow: 1,
         width: "100%",
         backgroundColor: "background.default",
+        position: "relative",
       }}
     >
       {children}

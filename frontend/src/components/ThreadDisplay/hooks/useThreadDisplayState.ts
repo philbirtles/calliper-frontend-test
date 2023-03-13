@@ -41,7 +41,6 @@ export const useThreadDisplayState = () => {
 
   return {
     data,
-    open: true,
     createMessage,
   };
 };
