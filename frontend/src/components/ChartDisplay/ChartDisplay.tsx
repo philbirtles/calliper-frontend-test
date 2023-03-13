@@ -11,6 +11,7 @@ import { getChartData } from "../../api";
 import { barChartProps } from "./chartConfig";
 import { useChartDisplayState } from "./hooks";
 import { useChartInteractions } from "./hooks/useChartInteractions";
+import Styles from "./styles.module.css";
 
 export const ChartDisplay = () => {
   const { data, dataKeys } = useChartDisplayState("chartData", getChartData);
@@ -25,6 +26,7 @@ export const ChartDisplay = () => {
         {dataKeys?.map((dataKey: ChartDataFeature) => {
           return (
             <Bar
+              className={Styles.BarItem}
               key={dataKey}
               onClick={(data) => onFeatureClick(data, dataKey)}
               dataKey={dataKey}
