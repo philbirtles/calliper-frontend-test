@@ -1,5 +1,14 @@
 import { createTheme } from "@mui/material";
 
+declare module "@mui/material/styles/createPalette" {
+  export interface TypeBackground {
+    default: string;
+    paper: string;
+    thread: string;
+    threadBorder: string;
+  }
+}
+
 export const defaultTheme = createTheme({
   palette: {
     primary: {
@@ -7,6 +16,9 @@ export const defaultTheme = createTheme({
     },
     background: {
       default: "#F7F8FD",
+      paper: "#FFFFFF",
+      thread: "#dde5ef",
+      threadBorder: "#bdc8d5",
     },
   },
 });

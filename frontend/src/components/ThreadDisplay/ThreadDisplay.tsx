@@ -1,32 +1,70 @@
-import { Stack, Paper } from "@mui/material";
+import { Stack, Paper, Box } from "@mui/material";
 import { CommentCard, CommentForm } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
 
 export const ThreadDisplay = () => {
-  const { data: thread, createMessage } = useThreadDisplayState();
+  const {
+    data: thread,
+    createMessage,
+    selectedDataPoint,
+  } = useThreadDisplayState();
 
   return (
-    <Paper
+    <Box
+      height="100%"
+      width="100%"
       sx={{
-        height: "100%",
-        width: "100%",
+        boxSizing: "border-box",
+        position: "relative",
       }}
     >
-      <Stack width="100%" height="100%" justifyContent="space-between">
-        <Stack spacing={2} sx={{ padding: 2 }}>
-          {thread?.comments?.map(({ userName, text }, index) => {
-            return (
-              <CommentCard
-                key={userName + text + index}
-                userName={userName}
-                message={text}
-              />
-            );
-          })}
+      <Paper
+        sx={{
+          border: "1px solid",
+          display: "flex",
+          borderColor: "background.threadBorder",
+          height: "100%",
+          width: "100%",
+          boxSizing: "border-box",
+          backgroundColor: "background.thread",
+          background:
+            "linear-gradient(202deg, #e7e8ee 0%, #e3eefa 35%, #ded9f5 100%)",
+        }}
+      >
+        <Stack
+          justifyContent="space-between"
+          sx={{
+            width: "100%",
+            height: { sm: "auto", md: "calc(100vh - 120px)" },
+            maxHeight: "calc(100vh - 120px)",
+            boxSizing: "border-box",
+          }}
+        >
+          <Stack
+            spacing={2}
+            sx={{
+              width: "100%",
+              height: "100%",
+              padding: 2,
+              boxSizing: "border-box",
+              flexGrow: 1,
+              overflow: "auto",
+            }}
+          >
+            {thread?.comments?.map(({ userName, text }, index) => {
+              return (
+                <CommentCard
+                  key={userName + text + index}
+                  userName={userName}
+                  message={text}
+                />
+              );
+            })}
+          </Stack>
+          {selectedDataPoint && <CommentForm onSubmit={createMessage} />}
         </Stack>
-        <CommentForm onSubmit={createMessage} />
-      </Stack>
-    </Paper>
+      </Paper>
+    </Box>
   );
 };

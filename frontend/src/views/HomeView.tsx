@@ -7,10 +7,10 @@ export const HomeView = () => {
   return (
     <PageLayout>
       <Grid height="100%" spacing={3} container>
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} sm={12} md={8} lg={9} xl={10}>
           <ChartDisplay />
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={12} md={4} lg={3} xl={2}>
           <ThreadDisplay />
         </Grid>
       </Grid>

@@ -8,6 +8,7 @@ export interface CommentLabelProps {
   onClick?: (data: Record<string, string>, dataKey: string) => void;
   value?: { country: Country; feature: ChartDataFeature };
   isStack?: boolean; //@TODO handle this better
+  fill: string;
 }
 
 export const CommentLabel = (props: CommentLabelProps) => {
@@ -22,13 +23,14 @@ export const CommentLabel = (props: CommentLabelProps) => {
 
   return (
     <g
+      filter={"drop-shadow(2px 2px 1px rgb(0 0 0 / 0.5))"}
       onClick={() => {
         if (!country || !feature) return;
         props.onClick?.({ country }, feature);
       }}
     >
       <svg
-        fill="#203041"
+        fill={props.fill}
         x={xOffset}
         y={yOffset}
         height={iconSize}
@@ -38,11 +40,7 @@ export const CommentLabel = (props: CommentLabelProps) => {
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          strokeWidth={1}
-          stroke="#000"
-          d="M14,3.5v6A1.5,1.5,0,0,1,12.5,11H8.75L3.5,14l.75-3H3.5A1.5,1.5,0,0,1,2,9.5v-6A1.5,1.5,0,0,1,3.5,2h9A1.5,1.5,0,0,1,14,3.5Z"
-        />
+        <path d="M14,3.5v6A1.5,1.5,0,0,1,12.5,11H8.75L3.5,14l.75-3H3.5A1.5,1.5,0,0,1,2,9.5v-6A1.5,1.5,0,0,1,3.5,2h9A1.5,1.5,0,0,1,14,3.5Z" />
       </svg>
       <text
         x={xOffset + iconSize / 2}

@@ -15,6 +15,8 @@ import { CommentLabel } from "./components";
 import { useChartDisplayState } from "./hooks";
 import { useChartInteractions } from "./hooks/useChartInteractions";
 import Styles from "./styles.module.css";
+import { Card } from "@mui/material";
+import { getColour } from "../../utils";
 
 export const ChartDisplay = () => {
   const { data } = useChartDisplayState("chartData", getChartData);
@@ -28,9 +30,16 @@ export const ChartDisplay = () => {
           key={dataKey}
           onClick={(data) => onFeatureClick(data, dataKey)}
           dataKey={dataKey}
+          fill={getColour(dataKey)}
+          filter={"drop-shadow(2px 2px 1px rgb(0 0 0 / 0.5))"}
         >
           <LabelList
-            content={<CommentLabel isStack={false} onClick={onFeatureClick} />}
+            content={
+              <CommentLabel
+                fill={getColour(dataKey)}
+                onClick={onFeatureClick}
+              />
+            }
             valueAccessor={({ country }: any) => {
               return { country, feature: dataKey };
             }}
@@ -41,14 +50,16 @@ export const ChartDisplay = () => {
   }, [onFeatureClick]);
 
   return (
-    <ResponsiveContainer height={600}>
-      <BarChart {...barChartProps} data={data}>
-        <XAxis dataKey="country" />
-        <YAxis />
-        <Legend />
-        <CartesianGrid vertical={false} />
-        {renderBars()}
-      </BarChart>
-    </ResponsiveContainer>
+    <Card sx={{ padding: 2 }}>
+      <ResponsiveContainer height={600}>
+        <BarChart {...barChartProps} data={data}>
+          <YAxis />
+          <Legend />
+          <CartesianGrid vertical={false} />
+          {renderBars()}
+          <XAxis dataKey="country" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
   );
 };

@@ -1,4 +1,4 @@
-import { Card, Typography, Avatar, Stack } from "@mui/material";
+import { Card, Typography, Avatar, Stack, Box } from "@mui/material";
 
 export interface CommentCardProps {
   userName?: string;
@@ -7,14 +7,28 @@ export interface CommentCardProps {
 
 export const CommentCard = ({ userName, message }: CommentCardProps) => {
   return (
-    <Card elevation={2} sx={{ padding: 1 }}>
-      <Stack spacing={2}>
-        <Stack direction={"row"} alignItems="center" spacing={2}>
-          <Avatar>{userName?.[0]}</Avatar>
-          <Typography variant="h6">{userName}</Typography>
-        </Stack>
-        <Typography>{message}</Typography>
-      </Stack>
-    </Card>
+    <Stack direction="row" sx={{ width: "100%" }} alignItems="end" spacing={1}>
+      <Avatar sx={{ backgroundColor: "primary.main" }}>{userName?.[0]}</Avatar>
+      <Box width="100%">
+        <Card
+          elevation={2}
+          sx={{
+            marginBottom: 2,
+            padding: 2,
+            flexGrow: 1,
+            borderRadius: "20px 20px 20px 0px",
+          }}
+        >
+          <Stack spacing={1}>
+            <Typography fontSize={14} fontWeight={700} variant={"body1"}>
+              {userName}
+            </Typography>
+            <Typography variant="subtitle1" fontSize={14}>
+              {message}
+            </Typography>
+          </Stack>
+        </Card>
+      </Box>
+    </Stack>
   );
 };

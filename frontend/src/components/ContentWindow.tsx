@@ -12,6 +12,9 @@ export const ContentWindow = ({ children }: ContentWindowProps) => {
         width: "100%",
         backgroundColor: "background.default",
         position: "relative",
+        display: "flex",
+        padding: 3,
+        boxSizing: "border-box",
       }}
     >
       {children}

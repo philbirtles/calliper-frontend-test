@@ -13,7 +13,6 @@ export const useCommentLabelState = ({
   width = 0,
   height = 0,
   value,
-  isStack = false,
 }: CommentLabelProps) => {
   const { feature, country } = value ?? {};
   const { chartRefreshKey } = useAppState();
@@ -31,18 +30,12 @@ export const useCommentLabelState = ({
   }, [country, feature, commentThreads]);
 
   const xOffset = useMemo(() => {
-    if (isStack) {
-      return x + width;
-    }
-    return x + width / 2;
-  }, [isStack, x, width]);
+    return x + width / 2 - 6;
+  }, [x, width]);
 
   const yOffset = useMemo(() => {
-    if (isStack) {
-      return y + height / 2 - iconSize;
-    }
     return y - iconSize;
-  }, [isStack, y, height]);
+  }, [y]);
 
   return {
     comments,
