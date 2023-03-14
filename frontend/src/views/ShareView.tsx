@@ -12,8 +12,7 @@ export const ShareView = () => {
 
   const getChartData = async (token: string) => {
     try {
-      const { data } = await getChartDataByToken(token);
-      console.log("!!!Data", data);
+      await getChartDataByToken(token);
     } catch {
       setHasError(true);
     } finally {
