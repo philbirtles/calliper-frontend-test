@@ -1,3 +1,5 @@
+const defaultColour = "#ffa611";
+
 const colours: Record<ChartDataFeature, string> = {
   burger: "#2F43A7",
   donut: "#af70e3",
@@ -8,5 +10,5 @@ const colours: Record<ChartDataFeature, string> = {
 };
 
 export const getColour = (key: ChartDataFeature) => {
-  return colours[key];
+  return colours[key] ?? defaultColour;
 };
