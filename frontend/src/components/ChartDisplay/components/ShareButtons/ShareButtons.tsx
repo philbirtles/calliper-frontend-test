@@ -1,9 +1,10 @@
 import Share from "@mui/icons-material/Share";
 import Copy from "@mui/icons-material/CopyAll";
 import CheckCircle from "@mui/icons-material/CheckCircle";
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { useState } from "react";
 import { getShareToken } from "../../../../api";
+import { ResponsiveButton } from "./components";
 
 export const ShareButtons = () => {
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
@@ -30,17 +31,19 @@ export const ShareButtons = () => {
 
   return (
     <Stack direction="row" spacing={3}>
-      <Button
+      <ResponsiveButton
         onClick={onCopyLinkClick}
+        icon={hasCopied ? <CheckCircle /> : <Copy />}
+        content={hasCopied ? "Copied!" : "Copy Link"}
         color={hasCopied ? "success" : "primary"}
-        startIcon={hasCopied ? <CheckCircle /> : <Copy />}
         variant="outlined"
-      >
-        {hasCopied ? "Copied!" : "Copy Link"}
-      </Button>
-      <Button variant="contained" onClick={onShareClick} startIcon={<Share />}>
-        Share Link
-      </Button>
+      />
+      <ResponsiveButton
+        onClick={onShareClick}
+        icon={<Share />}
+        content={"Share Link"}
+        variant="contained"
+      />
     </Stack>
   );
 };
