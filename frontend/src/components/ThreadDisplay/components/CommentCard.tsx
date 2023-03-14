@@ -19,12 +19,13 @@ export const CommentCard = ({ userName, message }: CommentCardProps) => {
       </Avatar>
       <Box width="100%">
         <Card
-          elevation={3}
+          elevation={1}
           sx={{
             backgroundColor: "background.paper",
             border: "1px solid",
             borderColor: "background.threadBorder",
-            marginBottom: 2,
+            marginBottom: 3,
+            marginTop: -3,
             paddingY: 1,
             paddingX: 2,
             flexGrow: 1,
@@ -39,7 +40,12 @@ export const CommentCard = ({ userName, message }: CommentCardProps) => {
             >
               {userName}
             </Typography>
-            <Typography paddingX={1} variant="subtitle1" fontSize={12}>
+            <Typography
+              marginLeft={1}
+              variant="subtitle1"
+              fontSize={12}
+              lineHeight={1.25}
+            >
               {message}
             </Typography>
           </Stack>

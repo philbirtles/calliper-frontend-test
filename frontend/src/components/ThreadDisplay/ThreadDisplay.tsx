@@ -1,4 +1,6 @@
-import { Stack, Paper, Box, Typography } from "@mui/material";
+import Close from "@mui/icons-material/Close";
+import { Stack, Paper, Box, Typography, IconButton, Card } from "@mui/material";
+import { setSelectedDataPoint } from "../../context";
 import { CommentCard, CommentForm } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
@@ -8,6 +10,7 @@ export const ThreadDisplay = () => {
     data: thread,
     createMessage,
     selectedDataPoint,
+    dispatch,
   } = useThreadDisplayState();
 
   return (
@@ -41,12 +44,31 @@ export const ThreadDisplay = () => {
             boxSizing: "border-box",
           }}
         >
+          {selectedDataPoint && (
+            <Card sx={{ overflow: "unset", padding: 1, zIndex: 1 }}>
+              <Stack
+                direction="row"
+                justifyContent={"space-between"}
+                alignItems={"center"}
+              >
+                <Typography
+                  fontWeight={600}
+                  textTransform={"capitalize"}
+                  sx={{ marginLeft: 1 }}
+                >{`${selectedDataPoint?.country} - ${selectedDataPoint?.feature}`}</Typography>
+                <IconButton onClick={() => dispatch?.(setSelectedDataPoint())}>
+                  <Close />
+                </IconButton>
+              </Stack>
+            </Card>
+          )}
           <Stack
-            spacing={2}
+            spacing={1}
             sx={{
               width: "100%",
               height: "100%",
-              padding: 2,
+              padding: 1,
+              paddingTop: 4,
               boxSizing: "border-box",
               flexGrow: 1,
               overflow: "auto",

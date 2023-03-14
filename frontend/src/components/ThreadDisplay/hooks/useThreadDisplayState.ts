@@ -56,5 +56,6 @@ export const useThreadDisplayState = () => {
     data,
     createMessage,
     selectedDataPoint,
+    dispatch,
   };
 };
