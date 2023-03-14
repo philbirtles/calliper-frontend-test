@@ -1,7 +1,7 @@
 import Close from "@mui/icons-material/Close";
 import { Stack, Paper, Box, Typography, IconButton, Card } from "@mui/material";
 import { setSelectedDataPoint } from "../../context";
-import { CommentCard, CommentForm } from "./components";
+import { CommentCard, CommentForm, NoMessages } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
 
@@ -76,9 +76,7 @@ export const ThreadDisplay = () => {
           >
             {selectedDataPoint &&
               (!thread?.comments || thread.comments.length <= 0) && (
-                <Typography textAlign="center">
-                  Be the first to say something about this.
-                </Typography>
+                <NoMessages />
               )}
             {thread?.comments?.map(({ userName, text }, index) => {
               return (
