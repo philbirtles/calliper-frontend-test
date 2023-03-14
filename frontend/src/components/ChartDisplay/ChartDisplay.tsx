@@ -11,7 +11,7 @@ import {
 import { useCallback } from "react";
 import { getChartData } from "../../api";
 import { barChartProps, dataKeys } from "./chartConfig";
-import { CommentLabel } from "./components";
+import { CommentLabel, NoData, ShareButtons } from "./components";
 import { useChartDisplayState, useChartInteractions } from "./hooks";
 import Styles from "./styles.module.css";
 import {
@@ -23,7 +23,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { getColour } from "../../utils";
-import { ShareButtons } from "./components/ShareButtons";
 
 export const ChartDisplay = () => {
   const theme = useTheme();
@@ -58,9 +57,13 @@ export const ChartDisplay = () => {
     });
   }, [onFeatureClick]);
 
+  if (!data || data.length < 0) {
+    return <NoData />;
+  }
+
   return (
     <Box height={"100%"}>
-      <Stack height={"100%"}>
+      <Stack height={"100%"} data-testid="recharts-wrapper">
         <Stack
           direction="row"
           marginBottom={3}

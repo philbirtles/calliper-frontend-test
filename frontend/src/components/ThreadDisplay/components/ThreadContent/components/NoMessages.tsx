@@ -3,6 +3,7 @@ import { Stack, Typography } from "@mui/material";
 export const NoMessages = () => {
   return (
     <Stack
+      data-testid="no-messages"
       alignItems="center"
       spacing={2}
       height="100%"

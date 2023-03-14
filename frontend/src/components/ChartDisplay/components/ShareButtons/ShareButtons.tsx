@@ -37,12 +37,14 @@ export const ShareButtons = () => {
         content={hasCopied ? "Copied!" : "Copy Link"}
         color={hasCopied ? "success" : "primary"}
         variant="outlined"
+        data-testid="copy-link-button"
       />
       <ResponsiveButton
         onClick={onShareClick}
         icon={<Share />}
         content={"Share Link"}
         variant="contained"
+        data-testid="share-link-button"
       />
     </Stack>
   );

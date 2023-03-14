@@ -29,7 +29,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "cypress run",
+    "test:watch": "cypress run --headed --no-exit",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.1"
+    "@types/uuid": "^9.0.1",
+    "cypress": "^12.8.0"
   }
 }

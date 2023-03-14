@@ -19,6 +19,7 @@ export const ThreadContent = () => {
       <ThreadTitle />
       <Stack
         spacing={1}
+        data-testid="thread-content"
         sx={{
           width: "100%",
           height: "100%",

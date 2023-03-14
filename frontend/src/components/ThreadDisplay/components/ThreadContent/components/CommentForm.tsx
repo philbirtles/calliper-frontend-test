@@ -16,7 +16,7 @@ export const CommentForm = ({
   }, [selectedDataPoint]);
 
   return (
-    <Card sx={{ padding: 1, overflow: "unset" }}>
+    <Card data-testid="comment-form" sx={{ padding: 1, overflow: "unset" }}>
       <Box>
         <form
           onSubmit={(event) => {

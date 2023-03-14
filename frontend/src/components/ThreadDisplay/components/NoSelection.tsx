@@ -8,6 +8,7 @@ export const NoSelection = () => {
       height="100%"
       justifyContent="center"
       sx={{ opacity: 0.65 }}
+      data-testid="thread-no-selection"
     >
       <Typography color="primary" variant="h5">
         Nothing selected.

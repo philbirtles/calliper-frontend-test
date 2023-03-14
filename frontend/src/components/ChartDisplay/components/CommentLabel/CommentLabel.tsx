@@ -23,6 +23,7 @@ export const CommentLabel = (props: CommentLabelProps) => {
   return (
     <g
       filter={"drop-shadow(2px 2px 1px rgb(0 0 0 / 0.5))"}
+      data-testid="comment-bubble"
       onClick={() => {
         if (!country || !feature) return;
         props.onClick?.({ country }, feature);

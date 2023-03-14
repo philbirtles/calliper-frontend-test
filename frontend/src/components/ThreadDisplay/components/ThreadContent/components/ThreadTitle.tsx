@@ -6,7 +6,10 @@ import { setSelectedDataPoint, useAppState } from "../../../../../context";
 export const ThreadTitle = () => {
   const { selectedDataPoint, dispatch } = useAppState();
   return (
-    <Card sx={{ overflow: "unset", padding: 1, zIndex: 1 }}>
+    <Card
+      data-testid="thread-title"
+      sx={{ overflow: "unset", padding: 1, zIndex: 1 }}
+    >
       <Stack
         direction="row"
         justifyContent={"space-between"}

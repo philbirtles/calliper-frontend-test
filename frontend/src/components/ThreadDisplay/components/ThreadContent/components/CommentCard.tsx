@@ -7,7 +7,13 @@ export interface CommentCardProps {
 
 export const CommentCard = ({ userName, message }: CommentCardProps) => {
   return (
-    <Stack direction="row" sx={{ width: "100%" }} alignItems="end" spacing={1}>
+    <Stack
+      data-testid="comment-card"
+      direction="row"
+      sx={{ width: "100%" }}
+      alignItems="end"
+      spacing={1}
+    >
       <Avatar
         sx={{
           backgroundColor: "primary.main",
