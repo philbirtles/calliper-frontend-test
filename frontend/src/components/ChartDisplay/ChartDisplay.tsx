@@ -27,7 +27,7 @@ import { ShareButtons } from "./components/ShareButtons";
 
 export const ChartDisplay = () => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const { data } = useChartDisplayState("chartData", getChartData);
   const { onFeatureClick } = useChartInteractions();
 
@@ -58,6 +58,8 @@ export const ChartDisplay = () => {
     });
   }, [onFeatureClick]);
 
+  console.log("!!!issmall", isSmallScreen);
+
   return (
     <Box height={"100%"}>
       <Stack height={"100%"}>
@@ -76,7 +78,7 @@ export const ChartDisplay = () => {
             <BarChart
               {...barChartProps}
               data={data}
-              barCategoryGap={8}
+              barCategoryGap={isSmallScreen ? 6 : 12}
               barGap={isSmallScreen ? 0 : 6}
             >
               <YAxis />
