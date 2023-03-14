@@ -12,11 +12,11 @@ import { useCallback } from "react";
 import { getChartData } from "../../api";
 import { barChartProps, dataKeys } from "./chartConfig";
 import { CommentLabel } from "./components";
-import { useChartDisplayState } from "./hooks";
-import { useChartInteractions } from "./hooks/useChartInteractions";
+import { useChartDisplayState, useChartInteractions } from "./hooks";
 import Styles from "./styles.module.css";
-import { Card } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import { getColour } from "../../utils";
+import { ShareButtons } from "./components/ShareButtons";
 
 export const ChartDisplay = () => {
   const { data } = useChartDisplayState("chartData", getChartData);
@@ -50,16 +50,28 @@ export const ChartDisplay = () => {
   }, [onFeatureClick]);
 
   return (
-    <Card sx={{ padding: 2, height: "80%", minHeight: "300px" }}>
-      <ResponsiveContainer height={"100%"}>
-        <BarChart {...barChartProps} data={data}>
-          <YAxis />
-          <Legend />
-          <CartesianGrid vertical={false} />
-          {renderBars()}
-          <XAxis dataKey="country" />
-        </BarChart>
-      </ResponsiveContainer>
-    </Card>
+    <>
+      <Stack
+        direction="row"
+        marginBottom={3}
+        justifyContent={"space-between"}
+        spacing={3}
+      >
+        <Typography variant={"h5"}>Foods by Country</Typography>
+        <ShareButtons />
+      </Stack>
+
+      <Card sx={{ padding: 2, height: "80%", minHeight: "300px" }}>
+        <ResponsiveContainer height={"100%"}>
+          <BarChart {...barChartProps} data={data}>
+            <YAxis />
+            <Legend />
+            <CartesianGrid vertical={false} />
+            {renderBars()}
+            <XAxis dataKey="country" />
+          </BarChart>
+        </ResponsiveContainer>
+      </Card>
+    </>
   );
 };

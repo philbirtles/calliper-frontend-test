@@ -10,6 +10,15 @@ declare module "@mui/material/styles/createPalette" {
 }
 
 export const defaultTheme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+  },
   palette: {
     secondary: {
       main: "#0C141C",

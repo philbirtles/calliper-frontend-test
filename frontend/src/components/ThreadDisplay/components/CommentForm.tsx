@@ -33,11 +33,7 @@ export const CommentForm = ({
               fullWidth
               value={inputText}
             />
-            <Button
-              variant="contained"
-              type="submit"
-              sx={{ textTransform: "none" }}
-            >
+            <Button variant="contained" type="submit">
               Send Message
             </Button>
           </Stack>
