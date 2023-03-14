@@ -8,11 +8,22 @@ export interface CommentCardProps {
 export const CommentCard = ({ userName, message }: CommentCardProps) => {
   return (
     <Stack direction="row" sx={{ width: "100%" }} alignItems="end" spacing={1}>
-      <Avatar sx={{ backgroundColor: "primary.main" }}>{userName?.[0]}</Avatar>
+      <Avatar
+        sx={{
+          backgroundColor: "primary.main",
+          border: "2px solid",
+          borderColor: "background.paper",
+        }}
+      >
+        {userName?.[0]}
+      </Avatar>
       <Box width="100%">
         <Card
-          elevation={2}
+          elevation={3}
           sx={{
+            backgroundColor: "background.paper",
+            border: "1px solid",
+            borderColor: "background.threadBorder",
             marginBottom: 2,
             paddingY: 1,
             paddingX: 2,
@@ -20,11 +31,15 @@ export const CommentCard = ({ userName, message }: CommentCardProps) => {
             borderRadius: "16px 16px 16px 0px",
           }}
         >
-          <Stack spacing={1}>
-            <Typography fontSize={14} fontWeight={700} variant={"body1"}>
+          <Stack>
+            <Typography
+              color={"text.secondary"}
+              variant="subtitle2"
+              fontSize={12}
+            >
               {userName}
             </Typography>
-            <Typography paddingX={1} variant="subtitle1" fontSize={14}>
+            <Typography paddingX={1} variant="subtitle1" fontSize={12}>
               {message}
             </Typography>
           </Stack>

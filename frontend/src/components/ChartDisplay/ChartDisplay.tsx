@@ -50,7 +50,7 @@ export const ChartDisplay = () => {
   }, [onFeatureClick]);
 
   return (
-    <Card sx={{ padding: 2, height: "80%" }}>
+    <Card sx={{ padding: 2, height: "80%", minHeight: "300px" }}>
       <ResponsiveContainer height={"100%"}>
         <BarChart {...barChartProps} data={data}>
           <YAxis />

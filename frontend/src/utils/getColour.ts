@@ -1,4 +1,4 @@
-const colours: Record<ChartDataFeature, any> = {
+const colours: Record<ChartDataFeature, string> = {
   burger: "#2F43A7",
   donut: "#af70e3",
   fries: "#f65dbd",

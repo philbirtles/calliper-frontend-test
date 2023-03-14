@@ -52,11 +52,12 @@ export const ThreadDisplay = () => {
               overflow: "auto",
             }}
           >
-            {(!thread?.comments || thread.comments.length <= 0) && (
-              <Typography textAlign="center">
-                Be the first to say something about this.
-              </Typography>
-            )}
+            {selectedDataPoint &&
+              (!thread?.comments || thread.comments.length <= 0) && (
+                <Typography textAlign="center">
+                  Be the first to say something about this.
+                </Typography>
+              )}
             {thread?.comments?.map(({ userName, text }, index) => {
               return (
                 <CommentCard
