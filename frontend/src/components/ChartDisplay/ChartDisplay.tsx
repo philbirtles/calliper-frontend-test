@@ -58,8 +58,6 @@ export const ChartDisplay = () => {
     });
   }, [onFeatureClick]);
 
-  console.log("!!!issmall", isSmallScreen);
-
   return (
     <Box height={"100%"}>
       <Stack height={"100%"}>
