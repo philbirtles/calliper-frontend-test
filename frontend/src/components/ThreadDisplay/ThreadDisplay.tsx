@@ -1,101 +1,13 @@
-import Close from "@mui/icons-material/Close";
-import { Stack, Paper, Box, Typography, IconButton, Card } from "@mui/material";
-import { setSelectedDataPoint } from "../../context";
-import { CommentCard, CommentForm, NoMessages } from "./components";
+import { DisplayWrapper, NoSelection, ThreadContent } from "./components";
 
 import { useThreadDisplayState } from "./hooks";
 
 export const ThreadDisplay = () => {
-  const {
-    data: thread,
-    createMessage,
-    selectedDataPoint,
-    dispatch,
-  } = useThreadDisplayState();
+  const { selectedDataPoint } = useThreadDisplayState();
 
   return (
-    <Box
-      height="100%"
-      width="100%"
-      sx={{
-        boxSizing: "border-box",
-        position: "relative",
-      }}
-    >
-      <Paper
-        sx={{
-          border: "1px solid",
-          display: "flex",
-          borderColor: "background.threadBorder",
-          height: "100%",
-          width: "100%",
-          boxSizing: "border-box",
-          backgroundColor: "background.thread",
-          background:
-            "linear-gradient(202deg, #e7e8ee 0%, #e3eefa 35%, #ded9f5 100%)",
-        }}
-      >
-        <Stack
-          justifyContent="space-between"
-          sx={{
-            width: "100%",
-            height: { sm: "auto", md: "calc(100vh - 120px)" },
-            maxHeight: "calc(100vh - 120px)",
-            boxSizing: "border-box",
-          }}
-        >
-          {selectedDataPoint && (
-            <Card sx={{ overflow: "unset", padding: 1, zIndex: 1 }}>
-              <Stack
-                direction="row"
-                justifyContent={"space-between"}
-                alignItems={"center"}
-              >
-                <Typography
-                  fontWeight={600}
-                  textTransform={"capitalize"}
-                  sx={{ marginLeft: 1 }}
-                >{`${selectedDataPoint?.country} - ${selectedDataPoint?.feature}`}</Typography>
-                <IconButton onClick={() => dispatch?.(setSelectedDataPoint())}>
-                  <Close />
-                </IconButton>
-              </Stack>
-            </Card>
-          )}
-          <Stack
-            spacing={1}
-            sx={{
-              width: "100%",
-              height: "100%",
-              padding: 1,
-              paddingTop: 4,
-              boxSizing: "border-box",
-              flexGrow: 1,
-              overflow: "auto",
-            }}
-          >
-            {selectedDataPoint &&
-              (!thread?.comments || thread.comments.length <= 0) && (
-                <NoMessages />
-              )}
-            {thread?.comments?.map(({ userName, text }, index) => {
-              return (
-                <CommentCard
-                  key={userName + text + index}
-                  userName={userName}
-                  message={text}
-                />
-              );
-            })}
-          </Stack>
-          {selectedDataPoint && (
-            <CommentForm
-              selectedDataPoint={selectedDataPoint}
-              onSubmit={createMessage}
-            />
-          )}
-        </Stack>
-      </Paper>
-    </Box>
+    <DisplayWrapper>
+      {selectedDataPoint ? <ThreadContent /> : <NoSelection />}
+    </DisplayWrapper>
   );
 };

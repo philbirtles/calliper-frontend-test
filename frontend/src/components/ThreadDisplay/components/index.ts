@@ -1,3 +1,3 @@
-export * from "./CommentForm";
-export * from "./CommentCard";
-export * from "./NoMessages";
+export * from "./DisplayWrapper";
+export * from "./ThreadContent";
+export * from "./NoSelection";
