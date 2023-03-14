@@ -14,11 +14,20 @@ import { barChartProps, dataKeys } from "./chartConfig";
 import { CommentLabel } from "./components";
 import { useChartDisplayState, useChartInteractions } from "./hooks";
 import Styles from "./styles.module.css";
-import { Card, Stack, Typography, Box } from "@mui/material";
+import {
+  Card,
+  Stack,
+  Typography,
+  Box,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { getColour } from "../../utils";
 import { ShareButtons } from "./components/ShareButtons";
 
 export const ChartDisplay = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { data } = useChartDisplayState("chartData", getChartData);
   const { onFeatureClick } = useChartInteractions();
 
@@ -62,9 +71,14 @@ export const ChartDisplay = () => {
           <ShareButtons />
         </Stack>
 
-        <Card sx={{ padding: 2, flexGrow: 1, minHeight: 0 }}>
-          <ResponsiveContainer minHeight={"300px"}>
-            <BarChart {...barChartProps} data={data}>
+        <Card sx={{ padding: 1, flexGrow: 1, minHeight: 0 }}>
+          <ResponsiveContainer minHeight={"400px"}>
+            <BarChart
+              {...barChartProps}
+              data={data}
+              barCategoryGap={8}
+              barGap={isSmallScreen ? 0 : 6}
+            >
               <YAxis />
               <Legend />
               <CartesianGrid vertical={false} />

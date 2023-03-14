@@ -1,7 +1,5 @@
 export const barChartProps = {
   reverseStackOrder: true,
-  barGap: 6,
-  barCategoryGap: 8,
   width: 500,
   height: 300,
   margin: {
