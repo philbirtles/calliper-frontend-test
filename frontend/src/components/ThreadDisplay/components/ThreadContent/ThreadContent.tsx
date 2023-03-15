@@ -7,7 +7,11 @@ import {
   ThreadTitle,
 } from "./components";
 
-export const ThreadContent = () => {
+export interface ThreadContentProps {
+  isLoading?: boolean;
+}
+
+export const ThreadContent = ({ isLoading }: ThreadContentProps) => {
   const {
     data: thread,
     createMessage,
@@ -30,10 +34,13 @@ export const ThreadContent = () => {
           overflow: "auto",
         }}
       >
-        {(!thread?.comments || thread.comments.length <= 0) && <NoMessages />}
+        {(!thread?.comments || thread.comments.length <= 0) && (
+          <NoMessages isLoading={isLoading} />
+        )}
         {thread?.comments?.map(({ userName, text }, index) => {
           return (
             <CommentCard
+              isLoading={isLoading}
               key={userName + text + index}
               userName={userName}
               message={text}

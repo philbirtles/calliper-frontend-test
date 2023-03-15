@@ -3,11 +3,15 @@ import { DisplayWrapper, NoSelection, ThreadContent } from "./components";
 import { useThreadDisplayState } from "./hooks";
 
 export const ThreadDisplay = () => {
-  const { selectedDataPoint } = useThreadDisplayState();
+  const { selectedDataPoint, isLoading } = useThreadDisplayState();
 
   return (
     <DisplayWrapper>
-      {selectedDataPoint ? <ThreadContent /> : <NoSelection />}
+      {selectedDataPoint ? (
+        <ThreadContent isLoading={isLoading} />
+      ) : (
+        <NoSelection />
+      )}
     </DisplayWrapper>
   );
 };

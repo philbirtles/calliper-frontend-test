@@ -12,7 +12,7 @@ import { postRespondToThread } from "../../../api/postRespondToThread";
 export const useThreadDisplayState = () => {
   const { selectedDataPoint, dispatch, chartRefreshKey } = useAppState();
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     selectedDataPoint?.threadId + chartRefreshKey ?? "",
     () => getCommentThreadById(selectedDataPoint?.threadId)
   );
@@ -56,5 +56,6 @@ export const useThreadDisplayState = () => {
     data,
     createMessage,
     selectedDataPoint,
+    isLoading,
   };
 };
